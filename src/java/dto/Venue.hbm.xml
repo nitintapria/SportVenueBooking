@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 16, 2017 12:28:01 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dto.Venue" table="venue" catalog="sportVenueBooking" optimistic-lock="version">
+        <id name="venueId" type="java.lang.Integer">
+            <column name="venue_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="citySport" class="dto.CitySport" fetch="select">
+            <column name="venue_city" not-null="true" />
+        </many-to-one>
+        <property name="venueName" type="string">
+            <column name="venue_name" not-null="true" />
+        </property>
+        <property name="venueAddress" type="string">
+            <column name="venue_address" not-null="true" />
+        </property>
+        <property name="img1" type="string">
+            <column name="img1" length="512" not-null="true" />
+        </property>
+        <property name="img2" type="string">
+            <column name="img2" length="512" not-null="true" />
+        </property>
+        <property name="img3" type="string">
+            <column name="img3" length="512" not-null="true" />
+        </property>
+        <property name="area" type="string">
+            <column name="area" not-null="true" />
+        </property>
+        <property name="capacity" type="int">
+            <column name="capacity" not-null="true" />
+        </property>
+        <property name="price" type="float">
+            <column name="price" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="venueStatus" type="boolean">
+            <column name="venue_status" not-null="true" />
+        </property>
+        <property name="venueDate" type="timestamp">
+            <column name="venue_date" length="19" not-null="true" />
+        </property>
+        <property name="venueDescription" type="string">
+            <column name="venue_description" length="65535" not-null="true" />
+        </property>
+        <set name="venueSports" table="venue_sport" inverse="true" fetch="select">
+            <key>
+                <column name="venue_id" />
+            </key>
+            <one-to-many class="dto.VenueSport" />
+        </set>
+    </class>
+</hibernate-mapping>

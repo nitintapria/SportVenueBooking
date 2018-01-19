@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+    
+    <context:component-scan base-package="contr"></context:component-scan>
+    
+    <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+           <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+           <property name="url" value="jdbc:mysql://localhost:3306/sportVenueBooking"></property>
+           <property name="username" value="root"></property>
+           <property name="password" value="root"></property>          
+       </bean>  
+       <bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+           <property name="dataSource" ref="myDataSource"></property>
+           <property name="hibernateProperties">
+               <props>
+                   <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                   <prop key="hibernate.show_sql">true</prop>
+                   <prop key="hibernate.hbm2ddl.auto">update</prop>
+               </props>
+           </property>
+           <property name="mappingResources">
+               <list>
+                   <value>/dto/AdminLogin.hbm.xml</value>
+                   <value>/dto/Booking.hbm.xml</value>
+                   <value>/dto/CityMaster.hbm.xml</value>
+                   <value>/dto/CitySport.hbm.xml</value>
+                   <value>/dto/Sport.hbm.xml</value>
+                   <value>/dto/StateMaster.hbm.xml</value>
+                   <value>/dto/OtpMaster.hbm.xml</value>
+                   <value>/dto/TaxMaster.hbm.xml</value>                
+                   <value>/dto/VenueSport.hbm.xml</value>
+                   <value>/dto/Venue.hbm.xml</value>
+                   <value>/dto/Users.hbm.xml</value>
+               </list>
+           </property>
+       </bean>
+       <bean id="template" class="org.springframework.orm.hibernate3.HibernateTemplate" autowire="byName">
+           <property name="sessionFactory" ref="mySessionFactory"></property>
+       </bean> 
+             
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <property name="maxUploadSize" value="20848820" />
+</bean>
+    
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/"
+          p:suffix=".jsp" />
+    
+</beans>

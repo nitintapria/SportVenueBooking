@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 16, 2017 12:28:01 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dto.VenueSport" table="venue_sport" catalog="sportVenueBooking" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="sport" class="dto.Sport" fetch="select">
+            <column name="sport_id" />
+        </many-to-one>
+        <many-to-one name="venue" class="dto.Venue" fetch="select">
+            <column name="venue_id" />
+        </many-to-one>
+        <set name="bookings" table="booking" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="venue_sport" not-null="true" />
+            </key>
+            <one-to-many class="dto.Booking" />
+        </set>
+    </class>
+</hibernate-mapping>

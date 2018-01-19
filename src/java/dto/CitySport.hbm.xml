@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 16, 2017 12:28:01 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dto.CitySport" table="city_sport" catalog="sportVenueBooking" optimistic-lock="version">
+        <id name="cityId" type="java.lang.Integer">
+            <column name="city_id" />
+            <generator class="identity" />
+        </id>
+        <property name="cityName" type="string">
+            <column name="city_name" not-null="true" />
+        </property>
+        <property name="cityStatus" type="java.lang.Boolean">
+            <column name="city_status" />
+        </property>
+        <property name="cityDate" type="timestamp">
+            <column name="city_date" length="19" />
+        </property>
+        <set name="venues" table="venue" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="venue_city" not-null="true" />
+            </key>
+            <one-to-many class="dto.Venue" />
+        </set>
+    </class>
+</hibernate-mapping>

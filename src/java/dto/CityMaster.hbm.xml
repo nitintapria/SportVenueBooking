@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 16, 2017 12:28:01 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dto.CityMaster" table="city_master" catalog="sportVenueBooking" optimistic-lock="version">
+        <id name="ctid" type="java.lang.Integer">
+            <column name="ctid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="stateMaster" class="dto.StateMaster" fetch="select">
+            <column name="sid" not-null="true" />
+        </many-to-one>
+        <property name="ctname" type="string">
+            <column name="ctname" not-null="true" />
+        </property>
+        <set name="userses" table="users" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ctid" not-null="true" />
+            </key>
+            <one-to-many class="dto.Users" />
+        </set>
+    </class>
+</hibernate-mapping>

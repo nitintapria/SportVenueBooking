@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 16, 2017 12:28:01 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dto.Booking" table="booking" catalog="sportVenueBooking" optimistic-lock="version">
+        <id name="bookId" type="java.lang.Integer">
+            <column name="book_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="users" class="dto.Users" fetch="select">
+            <column name="user_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="venueSport" class="dto.VenueSport" fetch="select">
+            <column name="venue_sport" not-null="true" />
+        </many-to-one>
+        <property name="startsTime" type="timestamp">
+            <column name="starts_time" length="19" not-null="true" />
+        </property>
+        <property name="endsTime" type="timestamp">
+            <column name="ends_time" length="19" not-null="true" />
+        </property>
+        <property name="totalPrice" type="float">
+            <column name="total_price" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="bookingDate" type="date">
+            <column name="booking_date" length="10" not-null="true" />
+        </property>
+        <property name="bookingStatus" type="boolean">
+            <column name="booking_status" not-null="true" />
+        </property>
+        <property name="transactionId" type="string">
+            <column name="transaction_id" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

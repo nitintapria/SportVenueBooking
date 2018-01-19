@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/sportVenueBooking?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <property name="hibernate.show_sql">true</property>
+    <!--    <property name="hibernate.hbm2ddl.auto">update</property>-->
+    <mapping resource="dto/Booking.hbm.xml"/>
+    <mapping resource="dto/Users.hbm.xml"/>
+    <mapping resource="dto/OtpMaster.hbm.xml"/>
+    <mapping resource="dto/CityMaster.hbm.xml"/>
+    <mapping resource="dto/CitySport.hbm.xml"/>
+    <mapping resource="dto/AdminLogin.hbm.xml"/>
+    <mapping resource="dto/Sport.hbm.xml"/>
+    <mapping resource="dto/StateMaster.hbm.xml"/>
+    <mapping resource="dto/Venue.hbm.xml"/>
+    <mapping resource="dto/VenueSport.hbm.xml"/>
+    <mapping resource="dto/TaxMaster.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

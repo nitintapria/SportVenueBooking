@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="sportVenueBooking"/>
+  <table-filter match-name="otp_master"/>
+  <table-filter match-name="venue_sport"/>
+  <table-filter match-name="venue"/>
+  <table-filter match-name="users"/>
+  <table-filter match-name="city_sport"/>
+  <table-filter match-name="admin_login"/>
+  <table-filter match-name="sport"/>
+  <table-filter match-name="city_master"/>
+  <table-filter match-name="state_master"/>
+  <table-filter match-name="booking"/>
+  <table-filter match-name="tax_master"/>
+</hibernate-reverse-engineering>

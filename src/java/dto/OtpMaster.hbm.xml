@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 16, 2017 12:28:01 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dto.OtpMaster" table="otp_master" catalog="sportVenueBooking" optimistic-lock="version">
+        <id name="userId" type="int">
+            <column name="user_id" />
+            <generator class="foreign">
+                <param name="property">users</param>
+            </generator>
+        </id>
+        <one-to-one name="users" class="dto.Users" constrained="true"></one-to-one>
+        <property name="otpNo" type="int">
+            <column name="otp_no" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

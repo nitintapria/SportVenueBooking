@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 16, 2017 12:28:01 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dto.AdminLogin" table="admin_login" catalog="sportVenueBooking" optimistic-lock="version">
+        <id name="adminLoginId" type="string">
+            <column name="admin_login_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="adminPassword" type="string">
+            <column name="admin_password" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
